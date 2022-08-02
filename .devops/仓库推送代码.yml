@@ -15,7 +15,7 @@ workflow:
       remote_url: '"https://testgitea2.trustie.net/gitgit/testdevops.git"'
       remote_branch: '"master"'
       source_path: '""'
-      target_dir: '""'
+      target_dir: '"/."'
       commit_message: '"jianmu default commit message"'
       committer_name: '"jianmu"'
       committer_email: '"jianmu@example.com"'
