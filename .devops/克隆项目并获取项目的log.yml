@@ -14,7 +14,7 @@ workflow:
       password: ((testgitea.pwd))
       remote_url: '"https://testgitea2.trustie.net/gitgit/testdevops.git"'
       ref: '"refs/heads/master"'
-      commit_id: '""'
+      commit_id: '"c3e9c6bb1e"'
     needs:
       - start
   - ref: end
