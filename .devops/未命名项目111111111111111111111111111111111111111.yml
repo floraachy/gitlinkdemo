@@ -1,0 +1,26 @@
+name: 未命名项目111111111111111111111111111111111111111
+description: ""
+global:
+  concurrent: false
+workflow:
+  - ref: start
+    name: 开始
+    task: start
+  - ref: dingtalk_notice_action_card_0
+    name: 钉钉通知-ActionCard
+    task: dingtalk_notice_action_card@1.0.2
+    input:
+      boot_webhook_url: ((wecom.bot_webhook))
+      msg_title: '"hello"'
+      msg_text: '"this is a test message"'
+      single_title: '""'
+      single_url: '""'
+      btns: '"[]"'
+    needs:
+      - start
+  - ref: end
+    name: 结束
+    task: end
+    needs:
+      - dingtalk_notice_action_card_0
+
