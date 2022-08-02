@@ -1,0 +1,29 @@
+name: 仓库推送代码
+description: ""
+global:
+  concurrent: false
+workflow:
+  - ref: start
+    name: 开始
+    task: start
+  - ref: git_push_0
+    name: git push
+    task: git_push@1.0.6
+    input:
+      username: ((testgitea.user))
+      password: ((testgitea.pwd))
+      remote_url: '"https://testgitea2.trustie.net/gitgit/testdevops.git"'
+      remote_branch: '"master"'
+      source_path: '""'
+      target_dir: '""'
+      commit_message: '"jianmu default commit message"'
+      committer_name: '"jianmu"'
+      committer_email: '"jianmu@example.com"'
+    needs:
+      - start
+  - ref: end
+    name: 结束
+    task: end
+    needs:
+      - git_push_0
+
