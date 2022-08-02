@@ -6,14 +6,6 @@ workflow:
   - ref: start
     name: 开始
     task: start
-  - ref: git_log_0
-    name: git log
-    task: git_log@1.0.1
-    input:
-      git_path: https://testgitea2.trustie.net/gitgit/testdevops.git
-      commit_num: 5
-    needs:
-      - git_clone_0
   - ref: end
     name: 结束
     task: end
@@ -30,4 +22,12 @@ workflow:
       commit_id: '""'
     needs:
       - start
+  - ref: git_log_0
+    name: git log
+    task: git_log@1.0.1
+    input:
+      git_path: '""'
+      commit_num: 5
+    needs:
+      - git_clone_0
 
