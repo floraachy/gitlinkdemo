@@ -22,6 +22,7 @@ workflow:
     task: end
     needs:
       - dingtalk_notice_action_card_0
+      - qywx_notice_0
   - ref: git_log_0
     name: git log
     task: git_log@1.0.2
@@ -40,6 +41,16 @@ workflow:
       single_title: '""'
       single_url: '""'
       btns: '"[]"'
+    needs:
+      - git_log_0
+  - ref: qywx_notice_0
+    name: 企业微信通知
+    task: qywx_notice@1.2.1-text
+    input:
+      bot_webhook_url: ((wechat.wechat_bot))
+      text_content: git_log_0.git_log
+      mentioned_list: '"[]"'
+      mentioned_mobile_list: '"[]"'
     needs:
       - git_log_0
 
