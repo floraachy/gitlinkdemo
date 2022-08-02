@@ -11,7 +11,7 @@ workflow:
     task: dingtalk_notice_action_card@1.0.2
     input:
       boot_webhook_url: ((wechat.wechat_bot))
-      msg_title: '""'
+      msg_title: 'aaaaaa'
       msg_text: '"eeeeeee"'
       single_title: '""'
       single_url: '""'
