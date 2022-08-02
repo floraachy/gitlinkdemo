@@ -1,0 +1,25 @@
+name: hello_world
+description: 建木快速入门，从hello world开始！
+
+trigger:
+  type: cron
+  schedule: 0 0/30 * * * ?
+
+workflow:
+  start:
+    type: start
+    targets:
+      - sayhello
+  sayhello:
+    type: qywx_notice:1.2.1
+    param:
+      bot_webhook_url: "((wecom.bot_webhook))"
+      text_content: "这是来自建木的第一个问候！"
+    sources:
+      - start
+    targets:
+      - end
+  end:
+    type: end
+    sources:
+      - sayhello
