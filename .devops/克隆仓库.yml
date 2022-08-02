@@ -8,7 +8,6 @@ workflow:
     task: start
   - ref: git_clone_0
     name: git clone
-    on-failure: ignore
     task: git_clone@1.2.4
     input:
       username: ((gitlink.username))
