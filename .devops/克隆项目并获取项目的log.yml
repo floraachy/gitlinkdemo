@@ -1,0 +1,25 @@
+name: 克隆项目并获取项目的log
+description: ""
+global:
+  concurrent: false
+workflow:
+  - ref: start
+    name: 开始
+    task: start
+  - ref: git_clone_0
+    name: git clone
+    task: git_clone@1.2.4
+    input:
+      username: ((gitlink.username))
+      password: ((gitlink.pwd))
+      remote_url: https://testgitea2.trustie.net/gitgit/testdevops.git
+      ref: '"refs/heads/master"'
+      commit_id: '""'
+    needs:
+      - start
+  - ref: end
+    name: 结束
+    task: end
+    needs:
+      - git_clone_0
+
