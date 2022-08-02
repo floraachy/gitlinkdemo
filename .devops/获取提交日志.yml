@@ -13,10 +13,21 @@ workflow:
       git_path: https://testgitea2.trustie.net/gitgit/testdevops.git
       commit_num: 5
     needs:
-      - start
+      - git_clone_0
   - ref: end
     name: 结束
     task: end
     needs:
       - git_log_0
+  - ref: git_clone_0
+    name: git clone
+    task: git_clone@1.2.4
+    input:
+      username: ((gitlink.username))
+      password: ((gitlink.pwd))
+      remote_url: https://testgitea2.trustie.net/gitgit/testdevops.git
+      ref: '"refs/heads/master"'
+      commit_id: '""'
+    needs:
+      - start
 
