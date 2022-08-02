@@ -12,7 +12,7 @@ workflow:
     input:
       username: ((testgitea.user))
       password: ((testgitea.pwd))
-      remote_url: https://testgitea2.trustie.net/gitgit/testdevops.git
+      remote_url: '"https://testgitea2.trustie.net/gitgit/testdevops.git"'
       ref: '"refs/heads/master"'
       commit_id: '""'
     needs:
