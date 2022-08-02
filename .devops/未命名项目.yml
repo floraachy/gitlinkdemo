@@ -11,8 +11,8 @@ workflow:
     task: dingtalk_notice_action_card@1.0.2
     input:
       boot_webhook_url: ((wecom.bot_webhook))
-      msg_title: '""'
-      msg_text: '""'
+      msg_title: '"hello"'
+      msg_text: '"this is a test message"'
       single_title: '""'
       single_url: '""'
       btns: '"[]"'
