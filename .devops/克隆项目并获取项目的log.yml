@@ -48,7 +48,7 @@ workflow:
     task: qywx_notice@1.2.1-text
     input:
       bot_webhook_url: ((wechat.wechat_bot))
-      text_content: git_log_0.git_log
+      text_content: JSON.stringify(git_log_0.git_log)
       mentioned_list: '"[]"'
       mentioned_mobile_list: '"[]"'
     needs:
