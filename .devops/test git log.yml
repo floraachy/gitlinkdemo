@@ -20,7 +20,7 @@ workflow:
     name: git log
     task: git_log@1.0.2
     input:
-      git_path: '""'
+      git_path: git_clone_0.git_path
       commit_num: 5
     needs:
       - git_clone_0
