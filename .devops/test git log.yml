@@ -13,7 +13,7 @@ workflow:
       remote_url: '"https://gitee.com/jianmu-dev/jianmu-ci-server.git"'
       ref: '"refs/heads/master"'
       commit_id: '""'
-      depth: 1
+      depth: 3
     needs:
       - start
   - ref: git_log_0
