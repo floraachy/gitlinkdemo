@@ -1,0 +1,32 @@
+name: test git log
+description: ""
+global:
+  concurrent: false
+workflow:
+  - ref: start
+    name: 开始
+    task: start
+  - ref: git_clone_0
+    name: git clone
+    task: git_clone@1.2.5
+    input:
+      remote_url: '"https://gitee.com/jianmu-dev/jianmu-ci-server.git"'
+      ref: '"refs/heads/master"'
+      commit_id: '""'
+      depth: 1
+    needs:
+      - start
+  - ref: git_log_0
+    name: git log
+    task: git_log@1.0.2
+    input:
+      git_path: '""'
+      commit_num: 5
+    needs:
+      - git_clone_0
+  - ref: end
+    name: 结束
+    task: end
+    needs:
+      - git_log_0
+
