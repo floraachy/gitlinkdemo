@@ -18,8 +18,8 @@ workflow:
     name: git clone
     task: git_clone@1.2.5
     input:
-      username: ((testgitea.user))
-      password: ((testgitea.pwd))
+      username: ((chytest3.user))
+      password: ((chytest3.pwd))
       remote_url: '"hhttps://testgitea2.trustie.net/postman/test_jiammu.git"'
       ref: '"refs/heads/master"'
       commit_id: '""'
