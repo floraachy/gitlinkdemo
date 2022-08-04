@@ -6,11 +6,6 @@ workflow:
   - ref: start
     name: 开始
     task: start
-  - ref: end
-    name: 结束
-    task: end
-    needs:
-      - git_clone_0
   - ref: git_clone_0
     name: git clone
     task: git_clone@1.2.5
@@ -21,4 +16,9 @@ workflow:
       depth: 1
     needs:
       - start
+  - ref: end
+    name: 结束
+    task: end
+    needs:
+      - git_clone_0
 
