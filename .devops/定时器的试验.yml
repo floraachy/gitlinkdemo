@@ -1,0 +1,37 @@
+name: 定时器的试验
+description: ""
+global:
+  concurrent: false
+trigger:
+  type: cron
+  schedule: 0 0 12 * * ?
+workflow:
+  - ref: start
+    name: 开始
+    task: start
+  - ref: git_clone_0
+    name: git clone
+    task: git_clone@1.2.5
+    input:
+      username: ((testgitea.user))
+      password: ((testgitea.pwd))
+      remote_url: '"https://testgitea2.trustie.net/gitgit/MiniCanvas.git"'
+      ref: '"refs/heads/master"'
+      commit_id: '""'
+      depth: 100
+    needs:
+      - start
+  - ref: git_log_0
+    name: git log
+    task: git_log@1.0.2
+    input:
+      git_path: git_clone_0.git_path
+      commit_num: 3
+    needs:
+      - git_clone_0
+  - ref: end
+    name: 结束
+    task: end
+    needs:
+      - git_log_0
+
