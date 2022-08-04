@@ -26,7 +26,7 @@ workflow:
     task: git_log@1.0.2
     input:
       git_path: git_clone_0.git_path
-      commit_num: 3
+      commit_num: 10
     needs:
       - git_clone_0
   - ref: end
