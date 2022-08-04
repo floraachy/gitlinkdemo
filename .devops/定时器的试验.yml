@@ -4,7 +4,7 @@ global:
   concurrent: false
 trigger:
   type: cron
-  schedule: 0 10 09 * * ?
+  schedule: 0 16 09 * * ?
 workflow:
   - ref: start
     name: 开始
