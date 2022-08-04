@@ -21,7 +21,7 @@ workflow:
       username: ((testgitea.user))
       password: ((testgitea.pwd))
       remote_url: '"https://testgitea2.trustie.net/gitgit/testdevops.git"'
-      ref: '"refs/heads/master"'
+      ref: '"refs/heads/babel.config.js"'
       commit_id: '""'
       depth: 100
     needs:
