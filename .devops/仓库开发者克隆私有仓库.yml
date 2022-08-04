@@ -1,0 +1,48 @@
+name: 仓库开发者克隆私有仓库
+description: ""
+global:
+  concurrent: false
+trigger:
+  type: cron
+  schedule: 0 30 14 * * ?
+workflow:
+  - ref: start
+    name: 开始
+    task: start
+  - ref: end
+    name: 结束
+    task: end
+    needs:
+      - dingtalk_notice_action_card_0
+  - ref: git_clone_0
+    name: git clone
+    task: git_clone@1.2.5
+    input:
+      username: ((testgitea.user))
+      password: ((testgitea.pwd))
+      remote_url: '"hhttps://testgitea2.trustie.net/postman/test_jiammu.git"'
+      ref: '"refs/heads/master"'
+      commit_id: '""'
+      depth: 100
+    needs:
+      - start
+  - ref: git_log_0
+    name: git log
+    task: git_log@1.0.2
+    input:
+      git_path: git_clone_0.git_path
+      commit_num: 5
+    needs:
+      - git_clone_0
+  - ref: dingtalk_notice_action_card_0
+    name: 钉钉通知-ActionCard
+    task: dingtalk_notice_action_card@1.0.2
+    input:
+      boot_webhook_url: ((wecom.bot_webhook))
+      msg_title: '""'
+      msg_text: git_log_0.git_log
+      single_title: '""'
+      single_url: '""'
+      btns: '"[]"'
+    needs:
+      - git_log_0
