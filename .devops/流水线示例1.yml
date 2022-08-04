@@ -13,7 +13,7 @@ workflow:
     name: 结束
     task: end
     needs:
-      - git_log_0
+      - dingtalk_notice_action_card_0
   - ref: git_clone_0
     name: git clone
     task: git_clone@1.2.5
@@ -34,4 +34,16 @@ workflow:
       commit_num: 5
     needs:
       - git_clone_0
+  - ref: dingtalk_notice_action_card_0
+    name: 钉钉通知-ActionCard
+    task: dingtalk_notice_action_card@1.0.2
+    input:
+      boot_webhook_url: ((wecom.bot_webhook))
+      msg_title: '""'
+      msg_text: git_log_0.git_log
+      single_title: '""'
+      single_url: '""'
+      btns: '"[]"'
+    needs:
+      - git_log_0
 
