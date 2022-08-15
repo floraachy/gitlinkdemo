@@ -19,7 +19,7 @@ workflow:
     input:
       boot_webhook_url: ((wecom.bot_webhook))
       msg_title: '"push"'
-      msg_text: '"有代码提交啦"'
+      msg_text: '"hello views有代码提交啦"'
       single_title: '""'
       single_url: '""'
       btns: '"[]"'
