@@ -1,0 +1,36 @@
+version: 2
+name: 项目有推送发送钉钉消息
+description: ""
+global:
+  concurrent: false
+trigger:
+  webhook: gitlink@1.0.0
+  event:
+    - ref: push
+      ruleset:
+        - param-ref: branch
+          operator: INCLUDE
+          value: '"master"'
+      ruleset-operator: AND
+workflow:
+  - ref: dingtalk_notice_action_card_0
+    name: 钉钉通知-ActionCard
+    task: dingtalk_notice_action_card@1.0.2
+    input:
+      boot_webhook_url: ((wecom.bot_webhook))
+      msg_title: '"push"'
+      msg_text: '"有代码提交啦"'
+      single_title: '""'
+      single_url: '""'
+      btns: '"[]"'
+    needs:
+      - start
+  - ref: start
+    name: 开始
+    task: start
+  - ref: end
+    name: 结束
+    task: end
+    needs:
+      - dingtalk_notice_action_card_0
+
